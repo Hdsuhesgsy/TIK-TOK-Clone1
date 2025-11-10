@@ -5,7 +5,7 @@
   <h1>Connect with REACT.JS!</h1>
   
   <p>
-Full Stack TikTok Clone with REACT.JS! (Next.js, Tailwind CSS, Video Uploading, Google Authentication, Tik-Tok Profile)
+Full Stack Connect with REACT.JS! (Next.js, Tailwind CSS, Video Uploading, Google Authentication, Tik-Tok Profile)
   </p>
   
   
