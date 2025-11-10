@@ -1,0 +1,145 @@
+/* CSS Custom Properties for TikTok Clone */
+:root {
+    /* Primary Colors */
+    --primary-red: #fe2c55;
+    --primary-cyan: #25f4ee;
+    --primary-gradient: linear-gradient(45deg, #fe2c55, #25f4ee);
+    
+    /* Background Colors */
+    --bg-primary: #000000;
+    --bg-secondary: #121212;
+    --bg-tertiary: #1e1e1e;
+    --bg-card: #242424;
+    --bg-overlay: rgba(0, 0, 0, 0.8);
+    --bg-modal: rgba(18, 18, 18, 0.95);
+    
+    /* Text Colors */
+    --text-primary: #ffffff;
+    --text-secondary: rgba(255, 255, 255, 0.75);
+    --text-tertiary: rgba(255, 255, 255, 0.5);
+    --text-muted: rgba(255, 255, 255, 0.3);
+    --text-inverse: #000000;
+    
+    /* Border Colors */
+    --border-primary: rgba(255, 255, 255, 0.1);
+    --border-secondary: rgba(255, 255, 255, 0.05);
+    --border-accent: #fe2c55;
+    
+    /* Status Colors */
+    --success: #20d5ec;
+    --error: #ff375f;
+    --warning: #ffd21e;
+    --info: #25f4ee;
+    
+    /* Social Colors */
+    --facebook: #1877f2;
+    --twitter: #1da1f2;
+    --whatsapp: #25d366;
+    --instagram: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    
+    /* Spacing */
+    --space-xs: 0.25rem;
+    --space-sm: 0.5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+    --space-3xl: 4rem;
+    
+    /* Typography */
+    --font-family-primary: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    --font-family-arabic: 'SF Arabic', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    
+    --font-weight-light: 300;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+    
+    --line-height-tight: 1.25;
+    --line-height-normal: 1.5;
+    --line-height-relaxed: 1.75;
+    
+    /* Border Radius */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+    --radius-2xl: 1.5rem;
+    --radius-full: 50%;
+    
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    
+    /* Transitions */
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 350ms ease;
+    --transition-bounce: 500ms cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    
+    /* Z-index */
+    --z-dropdown: 1000;
+    --z-sticky: 1020;
+    --z-fixed: 1030;
+    --z-modal-backdrop: 1040;
+    --z-modal: 1050;
+    --z-popover: 1060;
+    --z-tooltip: 1070;
+    --z-toast: 1080;
+    
+    /* Breakpoints */
+    --breakpoint-mobile: 320px;
+    --breakpoint-tablet: 768px;
+    --breakpoint-desktop: 1024px;
+    --breakpoint-wide: 1280px;
+    
+    /* Container Widths */
+    --container-mobile: 100%;
+    --container-tablet: 720px;
+    --container-desktop: 960px;
+    --container-wide: 1140px;
+    
+    /* Video Player */
+    --video-controls-height: 60px;
+    --video-progress-height: 3px;
+    
+    /* Navigation */
+    --top-nav-height: 60px;
+    --bottom-nav-height: 60px;
+}
+
+/* Dark mode variables (redundant for our case but good practice) */
+[data-theme="dark"] {
+    color-scheme: dark;
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --text-secondary: #ffffff;
+        --text-tertiary: #cccccc;
+        --border-primary: rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: 0ms;
+        --transition-normal: 0ms;
+        --transition-slow: 0ms;
+        --transition-bounce: 0ms;
+    }
+                                 }
