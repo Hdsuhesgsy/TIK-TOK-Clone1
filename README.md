@@ -1,24 +1,29 @@
 # TikTok Clone 🎵
 
-A responsive TikTok clone built with pure HTML, CSS, and JavaScript.
+تطبيق تيك توك مقلد كامل مبني بتقنيات HTML, CSS, و JavaScript.
 
-## ✨ Features
+## ✨ المميزات
 
-- 🎥 Video feed with swipe navigation
-- 💖 Like, comment, and share functionality  
-- 👤 User profiles and follow system
-- 🔍 Discover page
-- 📱 Fully responsive design
-- ⌨️ Keyboard shortcuts
+- 🎥 بث فيديو متقدم مع تحكم كامل
+- 💖 نظام تفاعل (إعجاب، تعليق، مشاركة)
+- 👤 ملفات شخصية ونظام متابعة
+- 🔍 صفحة اكتشاف المحتوى
+- 📤 رفع فيديوهات
+- 📱 تصميم متجاوب كامل
+- 🔔 إشعارات
+- 💾 عمل دون اتصال (PWA)
 
-## 🚀 Quick Start
+## 🚀 البداية السريعة
 
 ```bash
-# Clone repository
+# استنساخ المستودع
 git clone https://github.com/yourusername/tiktok-clone.git
 
-# Install dependencies
+# تثبيت dependencies
 npm install
 
-# Run development server
-npm run dev# TIK-TOK-Clone1
+# تشغيل خادم التطوير
+npm run dev
+
+# بناء للتوزيع
+npm run build
