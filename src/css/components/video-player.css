@@ -1,0 +1,628 @@
+/* Video Player Components - TikTok Clone */
+
+/* Video Container */
+.video-container {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    scroll-snap-align: start;
+}
+
+.video-player {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+}
+
+/* Video Overlay */
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        transparent 60%,
+        rgba(0, 0, 0, 0.3) 80%,
+        rgba(0, 0, 0, 0.6) 100%
+    );
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Video Info */
+.video-info {
+    position: absolute;
+    bottom: 120px;
+    left: 15px;
+    right: 100px;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.user-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.user-avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    flex-shrink: 0;
+    transition: border-color 0.3s ease;
+}
+
+.user-avatar:hover {
+    border-color: var(--primary-red);
+}
+
+.user-details {
+    flex: 1;
+    min-width: 0;
+}
+
+.username {
+    display: block;
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-primary);
+    margin-bottom: 2px;
+}
+
+.display-name {
+    display: block;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+.follow-btn {
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
+}
+
+.follow-btn:hover {
+    background: #ff375f;
+    transform: translateY(-1px);
+}
+
+.follow-btn.following {
+    background: rgba(255, 255, 255, 0.2);
+    color: var(--text-primary);
+}
+
+.follow-btn.following:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.video-caption {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--text-primary);
+    margin: 12px 0;
+    word-wrap: break-word;
+}
+
+.hashtag {
+    color: var(--primary-cyan);
+    font-weight: 600;
+}
+
+.mention {
+    color: var(--primary-cyan);
+    font-weight: 600;
+}
+
+.sound-info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+}
+
+.sound-info i {
+    font-size: 12px;
+}
+
+/* Action Buttons */
+.action-buttons {
+    position: absolute;
+    right: 15px;
+    bottom: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+.action-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+    background: none;
+    border: none;
+    color: var(--text-primary);
+}
+
+.action-btn:hover {
+    transform: scale(1.05);
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.action-btn i {
+    font-size: 28px;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 12px;
+    border-radius: 50%;
+    width: 54px;
+    height: 54px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.action-btn:hover i {
+    background: rgba(0, 0, 0, 0.7);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.action-btn .count {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+/* Like Button States */
+.like-btn.liked i {
+    color: var(--primary-red);
+    background: rgba(254, 44, 85, 0.1);
+    border-color: rgba(254, 44, 85, 0.3);
+}
+
+.like-btn .fa-heart {
+    transition: all 0.3s ease;
+}
+
+/* Save Button States */
+.save-btn.saved i {
+    color: var(--primary-cyan);
+}
+
+/* Video Controls */
+.video-controls {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 20px 15px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+.video-container:hover .video-controls {
+    opacity: 1;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 3px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    margin-bottom: 15px;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+}
+
+.progress {
+    height: 100%;
+    background: var(--primary-red);
+    border-radius: 2px;
+    width: 0%;
+    transition: width 0.1s ease;
+    position: relative;
+}
+
+.progress::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.progress-bar:hover .progress::after {
+    opacity: 1;
+}
+
+.control-buttons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 18px;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.time-display {
+    font-size: 13px;
+    color: var(--text-secondary);
+    font-weight: 500;
+    margin-left: auto;
+}
+
+/* Double Tap Animation */
+.double-tap-heart {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    pointer-events: none;
+    z-index: 10;
+    animation: doubleTapHeart 1s ease-out forwards;
+}
+
+.double-tap-heart i {
+    font-size: 50px;
+    color: var(--primary-red);
+    filter: drop-shadow(0 0 10px rgba(254, 44, 85, 0.5));
+}
+
+@keyframes doubleTapHeart {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    20% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: scale(1.5) translateY(-20px);
+        opacity: 0;
+    }
+}
+
+/* Loading States */
+.video-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+}
+
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid var(--primary-red);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* Video Error State */
+.video-error {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 2;
+}
+
+.video-error i {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.7;
+}
+
+.video-error p {
+    font-size: 16px;
+    margin-bottom: 12px;
+}
+
+.retry-btn {
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.retry-btn:hover {
+    background: #ff375f;
+}
+
+/* Volume Control */
+.volume-control {
+    position: absolute;
+    right: 70px;
+    bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.video-controls:hover .volume-control {
+    opacity: 1;
+}
+
+.volume-slider {
+    width: 80px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    outline: none;
+    -webkit-appearance: none;
+}
+
+.volume-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.volume-slider::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+}
+
+/* Playback Rate Control */
+.playback-rate {
+    position: absolute;
+    left: 15px;
+    bottom: 70px;
+    background: rgba(0, 0, 0, 0.8);
+    padding: 10px;
+    border-radius: 8px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 4;
+}
+
+.video-controls:hover .playback-rate {
+    opacity: 1;
+}
+
+.rate-options {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.rate-option {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 14px;
+}
+
+.rate-option:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+}
+
+.rate-option.active {
+    background: var(--primary-red);
+    color: white;
+}
+
+/* Fullscreen Support */
+.video-container:-webkit-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.video-container:-moz-full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.video-container:-ms-fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+.video-container:fullscreen {
+    width: 100%;
+    height: 100%;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .video-info {
+        bottom: 100px;
+        left: 10px;
+        right: 80px;
+    }
+    
+    .action-buttons {
+        bottom: 120px;
+        right: 10px;
+        gap: 15px;
+    }
+    
+    .action-btn i {
+        width: 48px;
+        height: 48px;
+        font-size: 24px;
+    }
+    
+    .user-avatar {
+        width: 42px;
+        height: 42px;
+    }
+    
+    .follow-btn {
+        padding: 6px 16px;
+        font-size: 13px;
+    }
+}
+
+@media (max-width: 480px) {
+    .video-info {
+        bottom: 90px;
+    }
+    
+    .action-buttons {
+        bottom: 110px;
+        gap: 12px;
+    }
+    
+    .action-btn i {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+        padding: 10px;
+    }
+    
+    .action-btn .count {
+        font-size: 12px;
+    }
+    
+    .video-caption {
+        font-size: 14px;
+    }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+    .progress-bar {
+        background: rgba(255, 255, 255, 0.5);
+    }
+    
+    .action-btn i {
+        border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .action-btn,
+    .control-btn,
+    .follow-btn {
+        transition: none;
+    }
+    
+    .double-tap-heart {
+        animation: none;
+        opacity: 0;
+    }
+}
+
+/* Touch Device Optimizations */
+@media (hover: none) and (pointer: coarse) {
+    .video-controls {
+        opacity: 1;
+        background: linear-gradient(transparent, rgba(0, 0, 0, 0.9));
+    }
+    
+    .volume-control {
+        opacity: 1;
+    }
+    
+    .playback-rate {
+        opacity: 1;
+    }
+    
+    .action-btn:hover {
+        transform: none;
+    }
+    
+    .action-btn:hover i {
+        background: rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Orientation Support */
+@media (orientation: landscape) and (max-height: 500px) {
+    .video-container {
+        height: 100vh;
+    }
+    
+    .video-info {
+        bottom: 80px;
+    }
+    
+    .action-buttons {
+        bottom: 100px;
+        gap: 10px;
+    }
+    
+    .action-btn i {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        padding: 8px;
+    }
+  }
