@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok Clone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-left">
+            <button class="nav-btn"><i class="fas fa-user-plus"></i></button>
+        </div>
+        <div class="nav-center">
+            <span class="following">Following</span>
+            <span class="for-you active">For You</span>
+        </div>
+        <div class="nav-right">
+            <button class="nav-btn"><i class="fas fa-search"></i></button>
+        </div>
+    </nav>
+
+    <!-- Video Feed -->
+    <div class="video-feed">
+        <!-- Video 1 -->
+        <div class="video-container active">
+            <video class="video-player" controls autoplay muted loop>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-sign-1232-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-info">
+                <div class="user-info">
+                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="User" class="user-avatar">
+                    <span class="username">@creative_user</span>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <p class="video-caption">Check out this amazing neon effect! ✨ #art #creative</p>
+                <div class="sound-info">
+                    <i class="fas fa-music"></i>
+                    <span>Original Sound - creative_user</span>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <div class="action-btn">
+                    <i class="fas fa-heart"></i>
+                    <span>125K</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment"></i>
+                    <span>2.5K</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>Share</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-music"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Video 2 -->
+        <div class="video-container">
+            <video class="video-player" controls muted loop>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4" type="video/mp4">
+            </video>
+            <div class="video-info">
+                <div class="user-info">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="User" class="user-avatar">
+                    <span class="username">@nature_lover</span>
+                    <button class="follow-btn">Follow</button>
+                </div>
+                <p class="video-caption">Beautiful spring day in the park 🌸 #nature #spring</p>
+                <div class="sound-info">
+                    <i class="fas fa-music"></i>
+                    <span>Nature Sounds - nature_lover</span>
+                </div>
+            </div>
+            <div class="action-buttons">
+                <div class="action-btn">
+                    <i class="fas fa-heart"></i>
+                    <span>89K</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-comment"></i>
+                    <span>1.8K</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-share"></i>
+                    <span>Share</span>
+                </div>
+                <div class="action-btn">
+                    <i class="fas fa-music"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item active">
+            <i class="fas fa-home"></i>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-compass"></i>
+            <span>Discover</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-plus-circle"></i>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-comment"></i>
+            <span>Inbox</span>
+        </a>
+        <a href="#" class="nav-item">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+        </a>
+    </nav>
+
+    <script src="script.js"></script>
+</body>
+</html>
