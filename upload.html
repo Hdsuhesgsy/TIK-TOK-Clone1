@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload - TikTok Clone</title>
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <button class="nav-btn back-btn" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-center">
+                    <h2 class="page-title">Upload Video</h2>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="nav-btn" id="draftBtn">
+                        <i class="fas fa-save"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Upload Content -->
+        <main class="upload-content">
+            <!-- Upload Steps -->
+            <div class="upload-steps">
+                <div class="step active" data-step="1">
+                    <div class="step-number">1</div>
+                    <span class="step-label">Select</span>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <span class="step-label">Edit</span>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <span class="step-label">Post</span>
+                </div>
+            </div>
+
+            <!-- Step 1: Select Video -->
+            <div class="upload-step active" data-step="1">
+                <div class="upload-zone" id="uploadZone">
+                    <div class="upload-placeholder">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <h3>Select Video to Upload</h3>
+                        <p>Or drag and drop a file</p>
+                        <button class="btn btn-primary" id="selectVideoBtn">
+                            Select Video
+                        </button>
+                        <div class="upload-requirements">
+                            <p>MP4 or WebM • 10-60 seconds • 720p or higher</p>
+                        </div>
+                    </div>
+                    <input type="file" id="videoFileInput" accept="video/*" hidden>
+                </div>
+            </div>
+
+            <!-- Step 2: Edit Video -->
+            <div class="upload-step" data-step="2">
+                <div class="video-editor">
+                    <div class="video-preview">
+                        <video id="videoPreview" controls>
+                            Your browser does not support the video tag.
+                        </video>
+                        <div class="preview-controls">
+                            <button class="control-btn" id="trimBtn">
+                                <i class="fas fa-cut"></i>
+                                Trim
+                            </button>
+                            <button class="control-btn" id="coverBtn">
+                                <i class="fas fa-image"></i>
+                                Cover
+                            </button>
+                            <button class="control-btn" id="soundBtn">
+                                <i class="fas fa-music"></i>
+                                Sound
+                            </button>
+                            <button class="control-btn" id="effectsBtn">
+                                <i class="fas fa-magic"></i>
+                                Effects
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="editor-sidebar">
+                        <!-- Trim Section -->
+                        <div class="editor-section" id="trimSection">
+                            <h4>Trim Video</h4>
+                            <div class="trim-controls">
+                                <div class="trim-timeline">
+                                    <div class="trim-range"></div>
+                                    <div class="trim-handle start-handle"></div>
+                                    <div class="trim-handle end-handle"></div>
+                                </div>
+                                <div class="trim-times">
+                                    <span class="start-time">0:00</span>
+                                    <span class="end-time">0:15</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cover Section -->
+                        <div class="editor-section" id="coverSection">
+                            <h4>Select Cover</h4>
+                            <div class="cover-options">
+                                <div class="cover-option selected">
+                                    <img src="#" alt="Cover 1" class="cover-thumb">
+                                </div>
+                                <div class="cover-option">
+                                    <img src="#" alt="Cover 2" class="cover-thumb">
+                                </div>
+                                <div class="cover-option">
+                                    <img src="#" alt="Cover 3" class="cover-thumb">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Sound Section -->
+                        <div class="editor-section" id="soundSection">
+                            <h4>Select Sound</h4>
+                            <div class="sound-options">
+                                <div class="sound-option selected">
+                                    <i class="fas fa-music"></i>
+                                    <span>Original Sound</span>
+                                </div>
+                                <div class="sound-option">
+                                    <i class="fas fa-music"></i>
+                                    <span>Trending Sound #1</span>
+                                </div>
+                                <div class="sound-option">
+                                    <i class="fas fa-music"></i>
+                                    <span>Popular Song</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Post Details -->
+            <div class="upload-step" data-step="3">
+                <div class="post-details">
+                    <div class="video-preview-small">
+                        <video id="finalPreview" controls>
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+
+                    <form class="post-form" id="postForm">
+                        <div class="form-group">
+                            <label class="form-label">Caption</label>
+                            <textarea class="form-input caption-input" 
+                                      placeholder="Write a caption..." 
+                                      maxlength="150"></textarea>
+                            <div class="char-counter">0/150</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Cover Image</label>
+                            <div class="cover-selector">
+                                <img src="#" alt="Selected cover" class="selected-cover">
+                                <button type="button" class="btn btn-outline" id="changeCoverBtn">
+                                    Change Cover
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Sound</label>
+                            <div class="sound-selector">
+                                <i class="fas fa-music"></i>
+                                <span class="selected-sound">Original Sound</span>
+                                <button type="button" class="btn btn-outline" id="changeSoundBtn">
+                                    Change
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Visibility</label>
+                            <div class="visibility-options">
+                                <label class="visibility-option">
+                                    <input type="radio" name="visibility" value="public" checked>
+                                    <i class="fas fa-globe"></i>
+                                    <span>Public</span>
+                                </label>
+                                <label class="visibility-option">
+                                    <input type="radio" name="visibility" value="friends">
+                                    <i class="fas fa-user-friends"></i>
+                                    <span>Friends</span>
+                                </label>
+                                <label class="visibility-option">
+                                    <input type="radio" name="visibility" value="private">
+                                    <i class="fas fa-lock"></i>
+                                    <span>Private</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label">Allow</label>
+                            <div class="permission-options">
+                                <label class="permission-option">
+                                    <input type="checkbox" name="allowComments" checked>
+                                    <span>Comments</span>
+                                </label>
+                                <label class="permission-option">
+                                    <input type="checkbox" name="allowDuets" checked>
+                                    <span>Duets</span>
+                                </label>
+                                <label class="permission-option">
+                                    <input type="checkbox" name="allowStitch" checked>
+                                    <span>Stitch</span>
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="upload-navigation">
+                <button class="btn btn-secondary" id="prevStepBtn" disabled>
+                    <i class="fas fa-arrow-left"></i>
+                    Previous
+                </button>
+                <button class="btn btn-primary" id="nextStepBtn">
+                    Next
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn btn-success" id="postBtn" style="display: none;">
+                    <i class="fas fa-paper-plane"></i>
+                    Post
+                </button>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="discover.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Discover</span>
+            </a>
+            <a href="upload.html" class="nav-item active upload-btn">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+            <a href="inbox.html" class="nav-item">
+                <i class="fas fa-comment"></i>
+                <span>Inbox</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Processing Modal -->
+    <div id="processingModal" class="modal hidden">
+        <div class="modal-content processing-modal">
+            <div class="processing-spinner">
+                <i class="fas fa-spinner fa-spin"></i>
+            </div>
+            <h3>Processing Your Video</h3>
+            <p>This may take a few moments...</p>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Modal -->
+    <div id="successModal" class="modal hidden">
+        <div class="modal-content success-modal">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h3>Video Posted Successfully!</h3>
+            <p>Your video is now live and visible to your followers</p>
+            <div class="success-actions">
+                <button class="btn btn-outline" id="viewPostBtn">View Post</button>
+                <button class="btn btn-primary" id="sharePostBtn">Share</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/pages/upload.js"></script>
+</body>
+                                  </html>
