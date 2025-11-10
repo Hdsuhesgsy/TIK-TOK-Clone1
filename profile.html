@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profile - TikTok Clone</title>
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <button class="nav-btn back-btn" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-center">
+                    <h2 class="page-title" id="profileUsername">@username</h2>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="nav-btn" id="settingsBtn">
+                        <i class="fas fa-ellipsis-h"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Profile Content -->
+        <main class="profile-content">
+            <!-- Profile Header -->
+            <section class="profile-header">
+                <div class="profile-info">
+                    <div class="avatar-section">
+                        <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="Profile" class="profile-avatar" id="profileAvatar">
+                        <div class="verification-badge" id="verificationBadge">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <span class="stat-number" id="postsCount">24</span>
+                            <span class="stat-label">Posts</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="followersCount">12.5K</span>
+                            <span class="stat-label">Followers</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number" id="followingCount">345</span>
+                            <span class="stat-label">Following</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="profile-details">
+                    <h1 class="profile-name" id="profileName">User Name</h1>
+                    <p class="profile-bio" id="profileBio">
+                        Digital creator 🎨 | Content creator | Follow for daily content ✨
+                        #art #creative #digital
+                    </p>
+                    <div class="profile-links">
+                        <a href="#" class="profile-link">
+                            <i class="fas fa-link"></i>
+                            <span>example.com</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-actions">
+                    <button class="btn btn-outline" id="editProfileBtn">
+                        <i class="fas fa-edit"></i>
+                        Edit Profile
+                    </button>
+                    <button class="btn btn-outline" id="shareProfileBtn">
+                        <i class="fas fa-share"></i>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Profile Navigation -->
+            <nav class="profile-nav">
+                <button class="profile-tab active" data-tab="videos">
+                    <i class="fas fa-video"></i>
+                    <span>Videos</span>
+                </button>
+                <button class="profile-tab" data-tab="liked">
+                    <i class="fas fa-heart"></i>
+                    <span>Liked</span>
+                </button>
+                <button class="profile-tab" data-tab="saved">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Saved</span>
+                </button>
+                <button class="profile-tab" data-tab="playlists">
+                    <i class="fas fa-list"></i>
+                    <span>Playlists</span>
+                </button>
+            </nav>
+
+            <!-- Profile Tabs Content -->
+            <div class="profile-tabs-content">
+                <!-- Videos Tab -->
+                <div class="tab-content active" id="videosTab">
+                    <div class="videos-grid" id="userVideosGrid">
+                        <!-- User videos will be loaded here -->
+                    </div>
+                    
+                    <div class="empty-state" id="noVideosState">
+                        <i class="fas fa-video"></i>
+                        <h3>No videos yet</h3>
+                        <p>Upload your first video to get started</p>
+                        <button class="btn btn-primary" onclick="location.href='upload.html'">
+                            Upload Video
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Liked Tab -->
+                <div class="tab-content" id="likedTab">
+                    <div class="private-content">
+                        <i class="fas fa-lock"></i>
+                        <h3>This user's liked videos are private</h3>
+                        <p>Liked videos are only visible to the account owner</p>
+                    </div>
+                </div>
+
+                <!-- Saved Tab -->
+                <div class="tab-content" id="savedTab">
+                    <div class="private-content">
+                        <i class="fas fa-lock"></i>
+                        <h3>Saved videos are private</h3>
+                        <p>Only you can see your saved videos</p>
+                    </div>
+                </div>
+
+                <!-- Playlists Tab -->
+                <div class="tab-content" id="playlistsTab">
+                    <div class="empty-state">
+                        <i class="fas fa-list"></i>
+                        <h3>No playlists yet</h3>
+                        <p>Create your first playlist to organize your favorite videos</p>
+                        <button class="btn btn-primary" id="createPlaylistBtn">
+                            Create Playlist
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="discover.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Discover</span>
+            </a>
+            <a href="upload.html" class="nav-item upload-btn">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+            <a href="inbox.html" class="nav-item">
+                <i class="fas fa-comment"></i>
+                <span>Inbox</span>
+            </a>
+            <a href="profile.html" class="nav-item active">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Edit Profile Modal -->
+    <div id="editProfileModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Edit Profile</h3>
+                <button class="close-modal" id="closeEditModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form class="edit-profile-form" id="editProfileForm">
+                    <div class="form-group">
+                        <label class="form-label">Profile Photo</label>
+                        <div class="avatar-upload">
+                            <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="Current Avatar" class="current-avatar">
+                            <input type="file" id="avatarUpload" accept="image/*" hidden>
+                            <button type="button" class="btn btn-outline" id="changeAvatarBtn">
+                                Change Photo
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" class="form-input" id="editName" value="User Name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Username</label>
+                        <input type="text" class="form-input" id="editUsername" value="@username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Bio</label>
+                        <textarea class="form-input form-textarea" id="editBio" 
+                                  placeholder="Tell everyone about yourself...">Digital creator 🎨 | Content creator | Follow for daily content ✨</textarea>
+                        <div class="char-counter">120/150</div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Website</label>
+                        <input type="url" class="form-input" id="editWebsite" placeholder="https://example.com">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="cancelEditBtn">Cancel</button>
+                <button class="btn btn-primary" id="saveProfileBtn">Save Changes</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/pages/profile.js"></script>
+</body>
+</html>
