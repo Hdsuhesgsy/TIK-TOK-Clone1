@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discover - TikTok Clone</title>
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <button class="nav-btn back-btn" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-center">
+                    <h2 class="page-title">Discover</h2>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="nav-btn search-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Discover Content -->
+        <main class="discover-content">
+            <!-- Search Section -->
+            <section class="search-section">
+                <div class="search-container">
+                    <div class="search-input-wrapper">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" class="search-input" placeholder="Search accounts, sounds, and hashtags...">
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trending Hashtags -->
+            <section class="section trending-hashtags">
+                <div class="section-header">
+                    <h3 class="section-title">Trending Hashtags</h3>
+                    <button class="view-all-btn">View All</button>
+                </div>
+                
+                <div class="hashtags-grid">
+                    <div class="hashtag-card">
+                        <div class="hashtag-info">
+                            <i class="fas fa-hashtag hashtag-icon"></i>
+                            <div class="hashtag-details">
+                                <h4 class="hashtag-name">#dance</h4>
+                                <p class="hashtag-views">12.5M views</p>
+                            </div>
+                        </div>
+                        <button class="follow-hashtag-btn">Follow</button>
+                    </div>
+                    
+                    <div class="hashtag-card">
+                        <div class="hashtag-info">
+                            <i class="fas fa-hashtag hashtag-icon"></i>
+                            <div class="hashtag-details">
+                                <h4 class="hashtag-name">#comedy</h4>
+                                <p class="hashtag-views">8.9M views</p>
+                            </div>
+                        </div>
+                        <button class="follow-hashtag-btn">Follow</button>
+                    </div>
+                    
+                    <div class="hashtag-card">
+                        <div class="hashtag-info">
+                            <i class="fas fa-hashtag hashtag-icon"></i>
+                            <div class="hashtag-details">
+                                <h4 class="hashtag-name">#fitness</h4>
+                                <p class="hashtag-views">6.7M views</p>
+                            </div>
+                        </div>
+                        <button class="follow-hashtag-btn">Follow</button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Trending Videos -->
+            <section class="section trending-videos">
+                <div class="section-header">
+                    <h3 class="section-title">Trending Videos</h3>
+                    <button class="view-all-btn">View All</button>
+                </div>
+                
+                <div class="videos-grid" id="trendingVideosGrid">
+                    <!-- Videos will be loaded dynamically -->
+                </div>
+            </section>
+
+            <!-- Popular Sounds -->
+            <section class="section popular-sounds">
+                <div class="section-header">
+                    <h3 class="section-title">Popular Sounds</h3>
+                    <button class="view-all-btn">View All</button>
+                </div>
+                
+                <div class="sounds-list">
+                    <div class="sound-card">
+                        <div class="sound-cover">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="sound-info">
+                            <h4 class="sound-name">Original Sound - user123</h4>
+                            <p class="sound-usage">245.6K videos</p>
+                        </div>
+                        <button class="play-sound-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="sound-card">
+                        <div class="sound-cover">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <div class="sound-info">
+                            <h4 class="sound-name">Trending Song 2024</h4>
+                            <p class="sound-usage">189.3K videos</p>
+                        </div>
+                        <button class="play-sound-btn">
+                            <i class="fas fa-play"></i>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Categories -->
+            <section class="section categories">
+                <div class="section-header">
+                    <h3 class="section-title">Categories</h3>
+                </div>
+                
+                <div class="categories-grid">
+                    <div class="category-card" data-category="dance">
+                        <div class="category-icon">
+                            <i class="fas fa-music"></i>
+                        </div>
+                        <span class="category-name">Dance</span>
+                    </div>
+                    
+                    <div class="category-card" data-category="comedy">
+                        <div class="category-icon">
+                            <i class="fas fa-laugh"></i>
+                        </div>
+                        <span class="category-name">Comedy</span>
+                    </div>
+                    
+                    <div class="category-card" data-category="sports">
+                        <div class="category-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <span class="category-name">Sports</span>
+                    </div>
+                    
+                    <div class="category-card" data-category="beauty">
+                        <div class="category-icon">
+                            <i class="fas fa-palette"></i>
+                        </div>
+                        <span class="category-name">Beauty</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="discover.html" class="nav-item active">
+                <i class="fas fa-compass"></i>
+                <span>Discover</span>
+            </a>
+            <a href="upload.html" class="nav-item upload-btn">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+            <a href="inbox.html" class="nav-item">
+                <i class="fas fa-comment"></i>
+                <span>Inbox</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <script src="../src/js/pages/discover.js"></script>
+</body>
+</html>
