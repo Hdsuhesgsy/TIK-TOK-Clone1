@@ -727,3 +727,112 @@
     font-size: var(--font-size-base);
     margin-bottom: var(--spacing-lg);
       }
+
+/* ===== NAVIGATION STYLES ===== */
+/* أنماط التنقل - تيك توك */
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: var(--background-dark);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: var(--spacing-sm) 0;
+    z-index: var(--z-fixed);
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: var(--font-size-xs);
+    transition: all var(--transition-normal);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+}
+
+.nav-item i {
+    font-size: var(--font-size-xl);
+    transition: all var(--transition-normal);
+}
+
+.nav-item.active {
+    color: var(--text-primary);
+}
+
+.nav-item.active i {
+    color: var(--primary-color);
+}
+
+.nav-item:hover {
+    color: var(--text-primary);
+    background: var(--surface-light);
+}
+
+.upload-btn {
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--text-primary) !important;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-full);
+    margin-top: -20px;
+    box-shadow: var(--shadow-lg);
+    transition: all var(--transition-normal);
+}
+
+.upload-btn:hover {
+    transform: scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+.upload-btn i {
+    font-size: var(--font-size-xl);
+}
+
+/* Top Navigation */
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: transparent;
+    z-index: var(--z-fixed);
+    padding: var(--spacing-sm) 0;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--spacing-md);
+    max-width: 100%;
+}
+
+.nav-btn {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    color: var(--text-primary);
+    font-size: var(--font-size-base);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-normal);
+}
+
+.nav-btn:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.1);
+        }
