@@ -1,0 +1,506 @@
+/* Responsive Design - TikTok Clone */
+
+/* Mobile First Approach */
+/* Base styles are for mobile (320px and up) */
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+    
+    /* Video feed adjustments */
+    .video-info {
+        bottom: 130px;
+    }
+    
+    .action-buttons {
+        bottom: 160px;
+    }
+    
+    /* Navigation adjustments */
+    .nav-item {
+        font-size: 11px;
+    }
+    
+    .nav-item i {
+        font-size: 20px;
+    }
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    /* App container for tablet */
+    .app {
+        max-width: 768px;
+        margin: 0 auto;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+    }
+    
+    /* Video feed improvements */
+    .video-info {
+        bottom: 140px;
+        left: 20px;
+        right: 120px;
+    }
+    
+    .action-buttons {
+        bottom: 170px;
+        right: 20px;
+        gap: 25px;
+    }
+    
+    .action-btn i {
+        width: 56px;
+        height: 56px;
+        font-size: 26px;
+    }
+    
+    /* Navigation improvements */
+    .top-nav {
+        padding: 0 20px;
+    }
+    
+    .bottom-nav {
+        padding: 0 15px;
+    }
+    
+    .nav-item {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+    
+    .nav-item i {
+        font-size: 22px;
+    }
+    
+    /* Modal improvements */
+    .modal-content {
+        max-width: 600px;
+    }
+    
+    /* Discover page grid */
+    .trending-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Large devices (desktops, 1024px and up) */
+@media (min-width: 1024px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    /* Mobile app simulation */
+    .app {
+        max-width: 414px;
+        height: 100vh;
+        margin: 20px auto;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 1px solid var(--border-primary);
+        position: relative;
+    }
+    
+    /* Add phone frame */
+    .app::before {
+        content: '';
+        position: absolute;
+        top: -1px;
+        left: -1px;
+        right: -1px;
+        bottom: -1px;
+        border: 12px solid #1a1a1a;
+        border-radius: 35px;
+        pointer-events: none;
+        z-index: 10000;
+    }
+    
+    .app::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 120px;
+        height: 4px;
+        background: #333;
+        border-radius: 2px;
+        pointer-events: none;
+        z-index: 10001;
+    }
+    
+    /* Video feed desktop optimizations */
+    .video-info {
+        bottom: 150px;
+    }
+    
+    .action-buttons {
+        bottom: 180px;
+    }
+    
+    /* Enhanced navigation */
+    .nav-center {
+        gap: 40px;
+    }
+    
+    .nav-tab {
+        font-size: 18px;
+    }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+    
+    /* Discover page enhancements */
+    .trending-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Ultra wide devices (1920px and up) */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1400px;
+    }
+    
+    /* Center the app on ultra-wide screens */
+    .app {
+        margin: 40px auto;
+    }
+}
+
+/* Height-based media queries */
+@media (max-height: 600px) {
+    /* Compact layout for short screens */
+    .video-info {
+        bottom: 100px;
+    }
+    
+    .action-buttons {
+        bottom: 130px;
+        gap: 15px;
+    }
+    
+    .action-btn i {
+        width: 44px;
+        height: 44px;
+        font-size: 22px;
+        padding: 10px;
+    }
+    
+    .user-avatar {
+        width: 36px;
+        height: 36px;
+    }
+    
+    .video-caption {
+        font-size: 13px;
+        margin: 8px 0;
+    }
+}
+
+/* Landscape orientation */
+@media (orientation: landscape) and (max-height: 500px) {
+    .video-container {
+        height: 100vh;
+    }
+    
+    .video-info {
+        bottom: 80px;
+        left: 10px;
+        right: 90px;
+    }
+    
+    .action-buttons {
+        bottom: 100px;
+        right: 10px;
+        gap: 12px;
+    }
+    
+    .action-btn i {
+        width: 40px;
+        height: 40px;
+        font-size: 18px;
+        padding: 8px;
+    }
+    
+    .action-btn .count {
+        font-size: 11px;
+    }
+    
+    .user-info {
+        margin-bottom: 8px;
+    }
+    
+    .user-avatar {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .video-caption {
+        font-size: 12px;
+        margin: 6px 0;
+    }
+}
+
+/* High DPI screens */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Enhance visuals for retina displays */
+    .user-avatar,
+    .comment-avatar,
+    .reply-avatar {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+    
+    .video-player {
+        image-rendering: -webkit-optimize-contrast;
+    }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+    
+    .video-player {
+        animation: none;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    :root {
+        --text-secondary: #ffffff;
+        --text-tertiary: #cccccc;
+        --border-primary: rgba(255, 255, 255, 0.5);
+    }
+    
+    .video-overlay {
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 50%,
+            rgba(0, 0, 0, 0.9) 100%
+        );
+    }
+}
+
+/* Inverted colors mode */
+@media (inverted-colors: inverted) {
+    .video-player {
+        filter: invert(1);
+    }
+    
+    img:not(.video-player) {
+        filter: invert(1);
+    }
+}
+
+/* Force dark mode */
+@media (prefers-color-scheme: dark) {
+    /* Ensure dark theme consistency */
+    .app {
+        background: #000000;
+    }
+}
+
+/* Force light mode */
+@media (prefers-color-scheme: light) {
+    .app {
+        background: #ffffff;
+        color: #000000;
+    }
+    
+    .top-nav,
+    .bottom-nav {
+        background: rgba(255, 255, 255, 0.95);
+        border-color: rgba(0, 0, 0, 0.1);
+    }
+    
+    .video-overlay {
+        background: linear-gradient(
+            to bottom,
+            transparent 0%,
+            transparent 60%,
+            rgba(255, 255, 255, 0.3) 80%,
+            rgba(255, 255, 255, 0.6) 100%
+        );
+    }
+}
+
+/* Touch device detection */
+@media (hover: none) and (pointer: coarse) {
+    /* Optimize for touch devices */
+    .action-btn,
+    .nav-btn,
+    .nav-item,
+    .control-btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    .video-controls {
+        opacity: 1;
+        padding: 25px 15px;
+    }
+    
+    .progress-bar {
+        height: 4px;
+    }
+    
+    /* Increase touch targets */
+    .follow-btn {
+        padding: 12px 24px;
+        min-height: 44px;
+    }
+    
+    .comment-like-btn,
+    .comment-reply-btn {
+        padding: 8px 12px;
+        min-height: 36px;
+    }
+}
+
+/* Non-touch device enhancements */
+@media (hover: hover) and (pointer: fine) {
+    /* Add hover effects for desktop */
+    .action-btn:hover {
+        transform: scale(1.1);
+    }
+    
+    .nav-item:hover {
+        background: rgba(255, 255, 255, 0.1);
+    }
+    
+    .video-container:hover .video-controls {
+        opacity: 1;
+    }
+}
+
+/* Print styles */
+@media print {
+    .top-nav,
+    .bottom-nav,
+    .action-buttons,
+    .video-controls {
+        display: none !important;
+    }
+    
+    .video-container {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+    
+    .app {
+        max-width: none;
+        margin: 0;
+        border: none;
+        box-shadow: none;
+    }
+}
+
+/* Safe area insets for modern devices */
+@supports (padding: max(0px)) {
+    .top-nav {
+        padding-top: max(15px, env(safe-area-inset-top));
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+    }
+    
+    .bottom-nav {
+        padding-bottom: max(15px, env(safe-area-inset-bottom));
+        padding-left: max(15px, env(safe-area-inset-left));
+        padding-right: max(15px, env(safe-area-inset-right));
+    }
+    
+    .modal {
+        padding: max(20px, env(safe-area-inset-top))
+                 max(20px, env(safe-area-inset-right))
+                 max(20px, env(safe-area-inset-bottom))
+                 max(20px, env(safe-area-inset-left));
+    }
+}
+
+/* Foldable devices support */
+@media (spanning: single-fold-vertical) {
+    .app {
+        margin: 0;
+        border-radius: 0;
+        max-width: none;
+    }
+}
+
+/* Very small screens */
+@media (max-width: 320px) {
+    .container {
+        padding: 0 8px;
+    }
+    
+    .video-info {
+        left: 8px;
+        right: 70px;
+        bottom: 100px;
+    }
+    
+    .action-buttons {
+        right: 8px;
+        bottom: 120px;
+        gap: 12px;
+    }
+    
+    .action-btn i {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+        padding: 8px;
+    }
+    
+    .nav-item {
+        padding: 6px 4px;
+        font-size: 9px;
+    }
+    
+    .nav-item i {
+        font-size: 18px;
+    }
+}
+
+/* Performance optimizations for low-end devices */
+@media (max-width: 768px) and (prefers-reduced-data: reduce) {
+    .video-player {
+        quality: low;
+    }
+    
+    .user-avatar,
+    .comment-avatar {
+        filter: blur(0.5px);
+    }
+    
+    .video-overlay {
+        backdrop-filter: none;
+    }
+}
+
+/* Data saver mode */
+@media (prefers-reduced-data: reduce) {
+    .video-player {
+        autoplay: false;
+    }
+    
+    .video-preview {
+        display: none;
+    }
+      }
