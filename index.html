@@ -1,125 +1,152 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TikTok Clone</title>
+    <title>TikTok Clone - تيك توك مقلد</title>
+    <meta name="description" content="تطبيق تيك توك مقلد مبني بتقنيات الويب الحديثة">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="src/css/base/reset.css">
+    <link rel="stylesheet" href="src/css/base/variables.css">
+    <link rel="stylesheet" href="src/css/base/typography.css">
+    <link rel="stylesheet" href="src/css/components/video-player.css">
+    <link rel="stylesheet" href="src/css/components/navigation.css">
+    <link rel="stylesheet" href="src/css/components/buttons.css">
+    <link rel="stylesheet" href="src/css/components/modals.css">
+    <link rel="stylesheet" href="src/css/components/comments.css">
+    <link rel="stylesheet" href="src/css/layout/grid.css">
+    <link rel="stylesheet" href="src/css/layout/responsive.css">
+    <link rel="stylesheet" href="src/css/pages/home.css">
+    <link rel="stylesheet" href="src/css/main.css">
+    
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json">
+    <link rel="icon" type="image/x-icon" href="public/icons/favicon.ico">
+    
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+    
+    <!-- Preload -->
+    <link rel="preload" href="src/js/core/app.js" as="script">
 </head>
 <body>
-    <!-- Top Navigation -->
-    <nav class="top-nav">
-        <div class="nav-left">
-            <button class="nav-btn"><i class="fas fa-user-plus"></i></button>
-        </div>
-        <div class="nav-center">
-            <span class="following">Following</span>
-            <span class="for-you active">For You</span>
-        </div>
-        <div class="nav-right">
-            <button class="nav-btn"><i class="fas fa-search"></i></button>
-        </div>
-    </nav>
+    <!-- Main App Container -->
+    <div id="app" class="app">
+        <!-- Top Navigation -->
+        <nav class="top-nav" id="topNav">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <button class="nav-btn" id="addFriendsBtn">
+                        <i class="fas fa-user-plus"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-center">
+                    <span class="nav-tab" data-tab="following">Following</span>
+                    <span class="nav-tab active" data-tab="foryou">For You</span>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="nav-btn" id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    <!-- Video Feed -->
-    <div class="video-feed">
-        <!-- Video 1 -->
-        <div class="video-container active">
-            <video class="video-player" controls autoplay muted loop>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-girl-in-neon-sign-1232-large.mp4" type="video/mp4">
-            </video>
-            <div class="video-info">
-                <div class="user-info">
-                    <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="User" class="user-avatar">
-                    <span class="username">@creative_user</span>
-                    <button class="follow-btn">Follow</button>
-                </div>
-                <p class="video-caption">Check out this amazing neon effect! ✨ #art #creative</p>
-                <div class="sound-info">
-                    <i class="fas fa-music"></i>
-                    <span>Original Sound - creative_user</span>
-                </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Video Feed -->
+            <div class="video-feed" id="videoFeed">
+                <!-- Videos will be loaded dynamically -->
             </div>
-            <div class="action-buttons">
-                <div class="action-btn">
-                    <i class="fas fa-heart"></i>
-                    <span>125K</span>
-                </div>
-                <div class="action-btn">
-                    <i class="fas fa-comment"></i>
-                    <span>2.5K</span>
-                </div>
-                <div class="action-btn">
-                    <i class="fas fa-share"></i>
-                    <span>Share</span>
-                </div>
-                <div class="action-btn">
-                    <i class="fas fa-music"></i>
-                </div>
-            </div>
-        </div>
 
-        <!-- Video 2 -->
-        <div class="video-container">
-            <video class="video-player" controls muted loop>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-tree-with-yellow-flowers-1173-large.mp4" type="video/mp4">
-            </video>
-            <div class="video-info">
-                <div class="user-info">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=100&q=80" alt="User" class="user-avatar">
-                    <span class="username">@nature_lover</span>
-                    <button class="follow-btn">Follow</button>
+            <!-- Discover Page (Hidden by default) -->
+            <div class="discover-page hidden" id="discoverPage">
+                <div class="discover-header">
+                    <h2>Discover</h2>
                 </div>
-                <p class="video-caption">Beautiful spring day in the park 🌸 #nature #spring</p>
-                <div class="sound-info">
-                    <i class="fas fa-music"></i>
-                    <span>Nature Sounds - nature_lover</span>
+                <div class="trending-grid" id="trendingGrid">
+                    <!-- Trending videos will be loaded here -->
                 </div>
             </div>
-            <div class="action-buttons">
-                <div class="action-btn">
-                    <i class="fas fa-heart"></i>
-                    <span>89K</span>
+        </main>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav" id="bottomNav">
+            <a href="#home" class="nav-item active" data-page="home">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="#discover" class="nav-item" data-page="discover">
+                <i class="fas fa-compass"></i>
+                <span>Discover</span>
+            </a>
+            <a href="#upload" class="nav-item upload-btn" data-page="upload">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+            <a href="#inbox" class="nav-item" data-page="inbox">
+                <i class="fas fa-comment"></i>
+                <span>Inbox</span>
+            </a>
+            <a href="#profile" class="nav-item" data-page="profile">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- Modals -->
+    <div id="uploadModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Video</h3>
+                <button class="close-modal" id="closeUploadModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Click to upload video</p>
+                    <input type="file" id="videoUpload" accept="video/*" hidden>
                 </div>
-                <div class="action-btn">
-                    <i class="fas fa-comment"></i>
-                    <span>1.8K</span>
-                </div>
-                <div class="action-btn">
-                    <i class="fas fa-share"></i>
-                    <span>Share</span>
-                </div>
-                <div class="action-btn">
-                    <i class="fas fa-music"></i>
+                <div class="upload-info hidden" id="uploadInfo">
+                    <input type="text" placeholder="Write a caption..." class="caption-input">
+                    <select class="privacy-select">
+                        <option value="public">Public</option>
+                        <option value="friends">Friends Only</option>
+                        <option value="private">Private</option>
+                    </select>
+                    <button class="post-btn" id="postBtn">Post</button>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-compass"></i>
-            <span>Discover</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-plus-circle"></i>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-comment"></i>
-            <span>Inbox</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-user"></i>
-            <span>Profile</span>
-        </a>
-    </nav>
+    <div id="commentModal" class="modal hidden">
+        <div class="modal-content comment-modal">
+            <div class="modal-header">
+                <h3>Comments</h3>
+                <button class="close-modal" id="closeCommentModal">&times;</button>
+            </div>
+            <div class="comments-list" id="commentsList">
+                <!-- Comments will be loaded here -->
+            </div>
+            <div class="comment-input-container">
+                <input type="text" placeholder="Add a comment..." class="comment-input" id="commentInput">
+                <button class="send-comment-btn" id="sendCommentBtn">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
 
-    <script src="script.js"></script>
+    <!-- Loading Spinner -->
+    <div class="loading-spinner hidden" id="loadingSpinner">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script type="module" src="src/js/core/app.js"></script>
 </body>
 </html>
