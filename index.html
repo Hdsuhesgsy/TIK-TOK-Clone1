@@ -8,6 +8,7 @@
     
     <!-- CSS Files -->
     <link rel="stylesheet" href="src/css/main.css">
+    <link rel="stylesheet" href="src/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <!-- PWA -->
@@ -20,6 +21,43 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <meta name="apple-mobile-web-app-title" content="TikTok Clone">
     <link rel="apple-touch-icon" href="public/icons/icon-192.png">
+
+    <style>
+        /* Temporary basic styles until CSS files are ready */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #000;
+            color: white;
+            overflow: hidden;
+        }
+        
+        .app {
+            height: 100vh;
+            position: relative;
+        }
+        
+        .video-container {
+            display: none;
+            height: 100vh;
+            position: relative;
+        }
+        
+        .video-container.active {
+            display: block;
+        }
+        
+        .video-player {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
 </head>
 <body>
     <!-- Main App Container -->
@@ -50,12 +88,11 @@
         <main class="main-content">
             <!-- Video Feed -->
             <div class="video-feed" id="videoFeed">
-                <!-- Videos will be loaded dynamically -->
+                <!-- Video 1 -->
                 <div class="video-container active" data-video-id="1">
-                    <video class="video-player" loop muted playsinline>
-                        <source src="public/videos/sample1.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="video-placeholder" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                        🎥 Video 1 - Placeholder
+                    </div>
                     
                     <!-- Video Overlay - User Info & Actions -->
                     <div class="video-overlay">
@@ -97,16 +134,17 @@
                                 <button class="action-btn music-btn">
                                     <i class="fas fa-music"></i>
                                 </button>
+                            <span class="action-count">Sound</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Video 2 -->
                 <div class="video-container" data-video-id="2">
-                    <video class="video-player" loop muted playsinline>
-                        <source src="public/videos/sample2.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="video-placeholder" style="background: linear-gradient(45deg, #4834d4, #686de0); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                        🎥 Video 2 - Placeholder
+                    </div>
                     
                     <div class="video-overlay">
                         <div class="user-info">
@@ -145,16 +183,17 @@
                                 <button class="action-btn music-btn">
                                     <i class="fas fa-music"></i>
                                 </button>
+                                <span class="action-count">Sound</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
+                <!-- Video 3 -->
                 <div class="video-container" data-video-id="3">
-                    <video class="video-player" loop muted playsinline>
-                        <source src="public/videos/sample3.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <div class="video-placeholder" style="background: linear-gradient(45deg, #00d2d3, #54a0ff); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                        🎥 Video 3 - Placeholder
+                    </div>
                     
                     <div class="video-overlay">
                         <div class="user-info">
@@ -193,6 +232,7 @@
                                 <button class="action-btn music-btn">
                                     <i class="fas fa-music"></i>
                                 </button>
+                                <span class="action-count">Sound</span>
                             </div>
                         </div>
                     </div>
@@ -224,199 +264,41 @@
         </nav>
     </div>
 
-    <!-- Upload Modal -->
-    <div id="uploadModal" class="modal hidden">
-        <div class="modal-content upload-modal">
-            <div class="modal-header">
-                <h3>Upload Video</h3>
-                <button class="close-modal" id="closeUploadModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="upload-area" id="uploadArea">
-                    <div class="upload-placeholder">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                        <p>Click to upload video</p>
-                        <span class="upload-hint">MP4, WebM • 10-60 seconds • 720p or higher</span>
-                    </div>
-                    <input type="file" id="videoUpload" accept="video/*" hidden>
-                </div>
-                <div class="upload-info hidden" id="uploadInfo">
-                    <div class="form-group">
-                        <label class="form-label">Caption</label>
-                        <input type="text" placeholder="Write a caption..." class="caption-input" maxlength="150">
-                        <div class="char-counter">0/150</div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Privacy</label>
-                        <select class="privacy-select">
-                            <option value="public">Public</option>
-                            <option value="friends">Friends Only</option>
-                            <option value="private">Private</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Allow</label>
-                        <div class="permission-options">
-                            <label class="permission-option">
-                                <input type="checkbox" checked> Comments
-                            </label>
-                            <label class="permission-option">
-                                <input type="checkbox" checked> Duets
-                            </label>
-                            <label class="permission-option">
-                                <input type="checkbox" checked> Stitch
-                            </label>
-                        </div>
-                    </div>
-                    <button class="btn btn-primary post-btn" id="postBtn">Post Video</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Comment Modal -->
-    <div id="commentModal" class="modal hidden">
-        <div class="modal-content comment-modal">
-            <div class="modal-header">
-                <h3>Comments</h3>
-                <button class="close-modal" id="closeCommentModal">
-                    <i class="fas fa-times"></i>
-                </button>
-            </div>
-            <div class="comments-list" id="commentsList">
-                <div class="comment-item">
-                    <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="User" class="comment-avatar">
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <span class="comment-username">@user123</span>
-                            <span class="comment-time">2 hours ago</span>
-                        </div>
-                        <p class="comment-text">This is amazing! 🔥</p>
-                        <div class="comment-actions">
-                            <button class="comment-like-btn">
-                                <i class="fas fa-heart"></i> 245
-                            </button>
-                            <button class="comment-reply-btn">Reply</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="comment-item">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="User" class="comment-avatar">
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <span class="comment-username">@dance_lover</span>
-                            <span class="comment-time">3 hours ago</span>
-                        </div>
-                        <p class="comment-text">The moves are so smooth! 💃</p>
-                        <div class="comment-actions">
-                            <button class="comment-like-btn">
-                                <i class="fas fa-heart"></i> 189
-                            </button>
-                            <button class="comment-reply-btn">Reply</button>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="comment-item">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                         alt="User" class="comment-avatar">
-                    <div class="comment-content">
-                        <div class="comment-header">
-                            <span class="comment-username">@music_fan</span>
-                            <span class="comment-time">5 hours ago</span>
-                        </div>
-                        <p class="comment-text">What's the song name? 🎵</p>
-                        <div class="comment-actions">
-                            <button class="comment-like-btn">
-                                <i class="fas fa-heart"></i> 76
-                            </button>
-                            <button class="comment-reply-btn">Reply</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="comment-input-container">
-                <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                     alt="Your Avatar" class="current-user-avatar">
-                <input type="text" placeholder="Add a comment..." class="comment-input" id="commentInput">
-                <button class="send-comment-btn" id="sendCommentBtn">
-                    <i class="fas fa-paper-plane"></i>
-                </button>
-            </div>
-        </div>
-    </div>
-
-    <!-- Search Modal -->
-    <div id="searchModal" class="modal hidden">
-        <div class="modal-content search-modal">
-            <div class="modal-header">
-                <div class="search-input-container">
-                    <i class="fas fa-search search-icon"></i>
-                    <input type="text" placeholder="Search accounts, sounds, and hashtags..." class="search-input" id="globalSearchInput">
-                    <button class="close-modal" id="closeSearchModal">
-                        <i class="fas fa-times"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="modal-body">
-                <div class="search-results" id="searchResults">
-                    <div class="search-section">
-                        <h4 class="section-title">Trending</h4>
-                        <div class="trending-list">
-                            <div class="trending-item">
-                                <i class="fas fa-hashtag"></i>
-                                <div class="trending-info">
-                                    <span class="trending-name">#dance</span>
-                                    <span class="trending-views">12.5M views</span>
-                                </div>
-                            </div>
-                            <div class="trending-item">
-                                <i class="fas fa-hashtag"></i>
-                                <div class="trending-info">
-                                    <span class="trending-name">#comedy</span>
-                                    <span class="trending-views">8.9M views</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="search-section">
-                        <h4 class="section-title">Accounts</h4>
-                        <div class="accounts-list">
-                            <div class="account-item">
-                                <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
-                                     alt="User" class="account-avatar">
-                                <div class="account-info">
-                                    <span class="account-username">@creative_user</span>
-                                    <span class="account-name">Creative User</span>
-                                </div>
-                                <button class="follow-btn">Follow</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Loading Spinner -->
-    <div class="loading-spinner hidden" id="loadingSpinner">
-        <div class="spinner"></div>
-        <p>Loading...</p>
-    </div>
-
-    <!-- Notification Toast -->
-    <div class="toast hidden" id="toast">
-        <span class="toast-message" id="toastMessage"></span>
-    </div>
-
     <!-- JavaScript Files -->
     <script src="src/js/core/app.js"></script>
     <script src="src/js/pages/home.js"></script>
+
+    <script>
+        // Temporary basic functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('TikTok Clone Loaded');
+            
+            // Basic video switching
+            const videoContainers = document.querySelectorAll('.video-container');
+            let currentVideoIndex = 0;
+            
+            function switchVideo(index) {
+                videoContainers.forEach(container => container.classList.remove('active'));
+                videoContainers[index].classList.add('active');
+                currentVideoIndex = index;
+            }
+            
+            // Like button functionality
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const icon = this.querySelector('i');
+                    icon.style.color = icon.style.color === 'red' ? 'white' : 'red';
+                });
+            });
+            
+            // Follow button functionality
+            document.querySelectorAll('.follow-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    this.textContent = this.textContent === 'Follow' ? 'Following' : 'Follow';
+                    this.style.background = this.textContent === 'Following' ? '#333' : '#fe2c55';
+                });
+            });
+        });
+    </script>
 </body>
-                                        </html>
+    </html>
