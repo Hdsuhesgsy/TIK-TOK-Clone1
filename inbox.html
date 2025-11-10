@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inbox - TikTok Clone</title>
+    <link rel="stylesheet" href="../src/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Top Navigation -->
+        <nav class="top-nav">
+            <div class="nav-container">
+                <div class="nav-left">
+                    <button class="nav-btn back-btn" onclick="history.back()">
+                        <i class="fas fa-arrow-left"></i>
+                    </button>
+                </div>
+                
+                <div class="nav-center">
+                    <h2 class="page-title">Inbox</h2>
+                </div>
+                
+                <div class="nav-right">
+                    <button class="nav-btn" id="inboxSettingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Inbox Content -->
+        <main class="inbox-content">
+            <!-- Inbox Tabs -->
+            <nav class="inbox-tabs">
+                <button class="inbox-tab active" data-tab="activity">
+                    <span>Activity</span>
+                </button>
+                <button class="inbox-tab" data-tab="messages">
+                    <span>Messages</span>
+                </button>
+            </nav>
+
+            <!-- Activity Tab -->
+            <div class="tab-content active" id="activityTab">
+                <!-- Today -->
+                <section class="activity-section">
+                    <h3 class="section-title">Today</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="User" class="activity-avatar">
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    <strong>creative_user</strong> liked your video
+                                </p>
+                                <span class="activity-time">2 hours ago</span>
+                            </div>
+                            <div class="activity-video">
+                                <img src="https://images.unsplash.com/photo-1511795409834-ef04bbd61622?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     alt="Video thumbnail" class="video-thumb">
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="User" class="activity-avatar">
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    <strong>nature_lover</strong> started following you
+                                </p>
+                                <span class="activity-time">4 hours ago</span>
+                            </div>
+                            <button class="follow-back-btn">Follow Back</button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- This Week -->
+                <section class="activity-section">
+                    <h3 class="section-title">This Week</h3>
+                    <div class="activity-list">
+                        <div class="activity-item">
+                            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="User" class="activity-avatar">
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    <strong>tech_guru</strong> commented on your video: "Amazing content! 🔥"
+                                </p>
+                                <span class="activity-time">2 days ago</span>
+                            </div>
+                            <div class="activity-video">
+                                <img src="https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     alt="Video thumbnail" class="video-thumb">
+                            </div>
+                        </div>
+
+                        <div class="activity-item">
+                            <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                                 alt="User" class="activity-avatar">
+                            <div class="activity-content">
+                                <p class="activity-text">
+                                    <strong>dance_queen</strong> mentioned you in a comment
+                                </p>
+                                <span class="activity-time">3 days ago</span>
+                            </div>
+                            <div class="activity-video">
+                                <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" 
+                                     alt="Video thumbnail" class="video-thumb">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Messages Tab -->
+            <div class="tab-content" id="messagesTab">
+                <div class="messages-list">
+                    <div class="message-thread">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="User" class="message-avatar">
+                        <div class="message-info">
+                            <div class="message-header">
+                                <h4 class="message-user">creative_user</h4>
+                                <span class="message-time">2 hours ago</span>
+                            </div>
+                            <p class="message-preview">Hey! I loved your latest video...</p>
+                        </div>
+                        <div class="message-badge">
+                            <span class="unread-count">3</span>
+                        </div>
+                    </div>
+
+                    <div class="message-thread">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="User" class="message-avatar">
+                        <div class="message-info">
+                            <div class="message-header">
+                                <h4 class="message-user">nature_lover</h4>
+                                <span class="message-time">1 day ago</span>
+                            </div>
+                            <p class="message-preview">Thanks for the follow back! 🌿</p>
+                        </div>
+                    </div>
+
+                    <div class="message-thread">
+                        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="User" class="message-avatar">
+                        <div class="message-info">
+                            <div class="message-header">
+                                <h4 class="message-user">tech_guru</h4>
+                                <span class="message-time">2 days ago</span>
+                            </div>
+                            <p class="message-preview">Can you share your editing setup?</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="empty-messages">
+                    <i class="fas fa-comments"></i>
+                    <h3>No messages yet</h3>
+                    <p>Start a conversation with someone</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- New Message FAB -->
+        <button class="fab" id="newMessageBtn">
+            <i class="fas fa-edit"></i>
+        </button>
+
+        <!-- Bottom Navigation -->
+        <nav class="bottom-nav">
+            <a href="home.html" class="nav-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </a>
+            <a href="discover.html" class="nav-item">
+                <i class="fas fa-compass"></i>
+                <span>Discover</span>
+            </a>
+            <a href="upload.html" class="nav-item upload-btn">
+                <i class="fas fa-plus-circle"></i>
+            </a>
+            <a href="inbox.html" class="nav-item active">
+                <i class="fas fa-comment"></i>
+                <span>Inbox</span>
+            </a>
+            <a href="profile.html" class="nav-item">
+                <i class="fas fa-user"></i>
+                <span>Profile</span>
+            </a>
+        </nav>
+    </div>
+
+    <!-- New Message Modal -->
+    <div id="newMessageModal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>New Message</h3>
+                <button class="close-modal" id="closeMessageModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="search-recipient">
+                    <input type="text" class="search-input" placeholder="Search users...">
+                </div>
+                <div class="recipients-list">
+                    <div class="recipient-item">
+                        <img src="https://images.unsplash.com/photo-1494790108755-2616b612b786?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="User" class="recipient-avatar">
+                        <span class="recipient-name">creative_user</span>
+                    </div>
+                    <div class="recipient-item">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                             alt="User" class="recipient-avatar">
+                        <span class="recipient-name">nature_lover</span>
+                    </div>
+                </div>
+                <div class="message-compose">
+                    <textarea class="message-input" placeholder="Type a message..."></textarea>
+                    <button class="send-message-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../src/js/pages/inbox.js"></script>
+</body>
+</html>
