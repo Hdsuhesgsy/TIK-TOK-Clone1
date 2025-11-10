@@ -2,7 +2,7 @@
 
   <img src="https://logospng.org/download/tiktok/logo-tiktok-icone-1536.png" alt="logo" width="230" height="auto" />
   
-  <h1>TikTok Clone with REACT.JS!</h1>
+  <h1>Connect with REACT.JS!</h1>
   
   <p>
 Full Stack TikTok Clone with REACT.JS! (Next.js, Tailwind CSS, Video Uploading, Google Authentication, Tik-Tok Profile)
