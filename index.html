@@ -6,7 +6,7 @@
     <title>TikTok Clone - تيك توك مقلد</title>
     <meta name="description" content="تطبيق تيك توك مقلد مبني بتقنيات الويب الحديثة">
     
-    <!-- CSS Files -->
+    <!-- CSS Files - الترتيب مهم -->
     <link rel="stylesheet" href="src/css/main.css">
     <link rel="stylesheet" href="src/css/home.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -23,39 +23,32 @@
     <link rel="apple-touch-icon" href="public/icons/icon-192.png">
 
     <style>
-        /* Temporary basic styles until CSS files are ready */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            background: #000;
-            color: white;
-            overflow: hidden;
-        }
-        
+        /* Temporary fixes for immediate display */
         .app {
-            height: 100vh;
-            position: relative;
+            height: 100vh !important;
+            background: #000 !important;
         }
         
         .video-container {
             display: none;
             height: 100vh;
             position: relative;
+            background: #000;
         }
         
         .video-container.active {
-            display: block;
+            display: block !important;
         }
         
-        .video-player {
+        .video-placeholder {
             width: 100%;
             height: 100%;
-            object-fit: cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
         }
     </style>
 </head>
@@ -90,7 +83,7 @@
             <div class="video-feed" id="videoFeed">
                 <!-- Video 1 -->
                 <div class="video-container active" data-video-id="1">
-                    <div class="video-placeholder" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                    <div class="video-placeholder" style="background: linear-gradient(45deg, #ff6b6b, #ee5a52);">
                         🎥 Video 1 - Placeholder
                     </div>
                     
@@ -134,7 +127,7 @@
                                 <button class="action-btn music-btn">
                                     <i class="fas fa-music"></i>
                                 </button>
-                            <span class="action-count">Sound</span>
+                                <span class="action-count">Sound</span>
                             </div>
                         </div>
                     </div>
@@ -142,7 +135,7 @@
 
                 <!-- Video 2 -->
                 <div class="video-container" data-video-id="2">
-                    <div class="video-placeholder" style="background: linear-gradient(45deg, #4834d4, #686de0); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                    <div class="video-placeholder" style="background: linear-gradient(45deg, #4834d4, #686de0);">
                         🎥 Video 2 - Placeholder
                     </div>
                     
@@ -191,7 +184,7 @@
 
                 <!-- Video 3 -->
                 <div class="video-container" data-video-id="3">
-                    <div class="video-placeholder" style="background: linear-gradient(45deg, #00d2d3, #54a0ff); height: 100%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                    <div class="video-placeholder" style="background: linear-gradient(45deg, #00d2d3, #54a0ff);">
                         🎥 Video 3 - Placeholder
                     </div>
                     
@@ -269,36 +262,89 @@
     <script src="src/js/pages/home.js"></script>
 
     <script>
-        // Temporary basic functionality
+        // Temporary basic functionality until home.js is ready
         document.addEventListener('DOMContentLoaded', function() {
             console.log('TikTok Clone Loaded');
             
             // Basic video switching
             const videoContainers = document.querySelectorAll('.video-container');
+            const videoFeed = document.querySelector('.video-feed');
             let currentVideoIndex = 0;
             
             function switchVideo(index) {
+                if (index < 0 || index >= videoContainers.length) return;
+                
                 videoContainers.forEach(container => container.classList.remove('active'));
                 videoContainers[index].classList.add('active');
                 currentVideoIndex = index;
+                
+                // Scroll to the active video
+                videoFeed.scrollTo(0, index * window.innerHeight);
             }
+            
+            // Handle scroll for video switching
+            let isScrolling = false;
+            videoFeed.addEventListener('scroll', () => {
+                if (isScrolling) return;
+                
+                isScrolling = true;
+                const scrollPosition = videoFeed.scrollTop;
+                const windowHeight = window.innerHeight;
+                const newIndex = Math.round(scrollPosition / windowHeight);
+                
+                if (newIndex !== currentVideoIndex) {
+                    switchVideo(newIndex);
+                }
+                
+                setTimeout(() => {
+                    isScrolling = false;
+                }, 100);
+            });
             
             // Like button functionality
             document.querySelectorAll('.like-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const icon = this.querySelector('i');
-                    icon.style.color = icon.style.color === 'red' ? 'white' : 'red';
+                    const countElement = this.parentElement.querySelector('.action-count');
+                    
+                    if (icon.style.color === 'red') {
+                        icon.style.color = 'white';
+                        // Decrease count
+                        let currentCount = parseFloat(countElement.textContent);
+                        countElement.textContent = (currentCount - 0.1).toFixed(1) + 'K';
+                    } else {
+                        icon.style.color = 'red';
+                        // Increase count
+                        let currentCount = parseFloat(countElement.textContent);
+                        countElement.textContent = (currentCount + 0.1).toFixed(1) + 'K';
+                    }
                 });
             });
             
             // Follow button functionality
             document.querySelectorAll('.follow-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    this.textContent = this.textContent === 'Follow' ? 'Following' : 'Follow';
-                    this.style.background = this.textContent === 'Following' ? '#333' : '#fe2c55';
+                    if (this.textContent === 'Follow') {
+                        this.textContent = 'Following';
+                        this.style.background = '#333';
+                    } else {
+                        this.textContent = 'Follow';
+                        this.style.background = '#fe2c55';
+                    }
                 });
             });
+            
+            // Tab switching
+            document.querySelectorAll('.nav-tab').forEach(tab => {
+                tab.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-tab').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Initialize first video
+            switchVideo(0);
         });
     </script>
 </body>
-    </html>
+</html>
